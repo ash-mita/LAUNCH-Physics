@@ -35,3 +35,21 @@ li {
   list-style-type: square;
   text-align: left;
 }
+
+.word:hover {
+    background-color: lightgrey;
+	  color: #262626;
+}
+
+a {
+  color: inherit;
+  style: none;
+}
+.word {
+	padding: 3% 3%;
+	float: right;
+	display: block;
+  color: #262626;
+  text-align: center;
+  text-decoration: none;
+}
