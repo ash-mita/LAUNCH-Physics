@@ -55,6 +55,10 @@ a {
   text-decoration: none;
 }
 
+.otherword {
+  text-align: right;
+}
+
 div {
   font-family: 'Exo 2', sans-serif;
 }
