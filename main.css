@@ -1,0 +1,37 @@
+.login {
+    padding: 10%;
+    background-color: lightgrey;
+    border-radius: 5%;
+    border: 1% solid black;
+    text-align: center;
+}
+
+.textbox {
+    background-color: aliceblue;
+    color: darkgrey;
+}
+
+.textbox: {
+    color: aliceblue;
+}
+.button {
+    background-color: darkseagreen; /* Green */
+    border: 1px solid white;
+    color: white;
+    border-radius: 2%;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button:hover {
+  background-color: green;
+}
+
+li {
+  display: inline-block;
+  list-style-type: square;
+  text-align: left;
+}
