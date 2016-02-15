@@ -1,6 +1,6 @@
 .login {
     padding: 10%;
-    background-color: lightgrey;
+    background-color: #f2f2f2;
     border-radius: 5%;
     border: 1% solid black;
     text-align: center;
@@ -24,6 +24,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .button:hover {
@@ -37,7 +38,7 @@ li {
 }
 
 .word:hover {
-    background-color: lightgrey;
+    background-color: #f2f2f2;
 	  color: #262626;
 }
 
@@ -52,4 +53,8 @@ a {
   color: #262626;
   text-align: center;
   text-decoration: none;
+}
+
+div {
+  font-family: 'Exo 2', sans-serif;
 }
