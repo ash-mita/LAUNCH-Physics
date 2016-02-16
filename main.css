@@ -69,3 +69,12 @@ div {
 .dummy {
   height: 5%;
 }
+
+.badge {
+  text-align: center;
+  height: 10%;
+  width: 30%;
+  padding-top: 10%;
+  background-color: #f2f2f2;
+  display: inline-block;
+}
