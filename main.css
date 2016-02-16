@@ -6,14 +6,6 @@
     text-align: center;
 }
 
-.textbox {
-    background-color: aliceblue;
-    color: darkgrey;
-}
-
-.textbox: {
-    color: aliceblue;
-}
 .button {
     background-color: darkseagreen; /* Green */
     border: 1px solid white;
@@ -55,14 +47,25 @@ a {
   text-decoration: none;
 }
 
-.otherword {
-  text-align: right;
-}
-
 div {
   font-family: 'Exo 2', sans-serif;
 }
 
-input {
-  text-align: left;
+.track {
+  background-color: #f2f2f2;
+  width: 90%;
+  text-align: center;
+}
+
+.track:hover{
+  background-color: darkseagreen;
+  color: aliceblue;
+}
+
+.top {
+  clear:both;
+}
+
+.dummy {
+  height: 5%;
 }
