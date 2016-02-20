@@ -1,0 +1,13 @@
+extends ./_template.jade
+
+block vars
+	- var pageName = "Log In";
+
+block head
+	link(rel="stylesheet", href="/static/css/login.css")
+
+block body
+	form(method="POST")
+		input(name="username", placeholder="Username")
+		input(name="password", placeholder="Password", type="password")
+		button(type="submit") Log In

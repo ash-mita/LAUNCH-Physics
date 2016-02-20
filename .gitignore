@@ -1,0 +1,12 @@
+.*
+!.gitignore
+
+launch-physics.db
+
+dist/
+node_modules/
+venv/
+
+static/css/
+static/js/
+templates/

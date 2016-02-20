@@ -1,0 +1,16 @@
+extends ./_template.jade
+
+block vars
+	- var pageName = "My Account";
+
+block head
+	link(rel="stylesheet", href="/static/css/account.css")
+
+block body
+	section
+		h2 Settings
+		form(action="/change_password", method="POST")
+			input(name="old_password", placeholder="Old Password", type="password")
+			input(name="new_password", placeholder="New Password", type="password")
+			input(name="confirm_password", placeholder="Confirm Password", type="password")
+			button(type="submit") Change Password

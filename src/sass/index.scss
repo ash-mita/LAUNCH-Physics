@@ -1,0 +1,12 @@
+a.topic {
+	display: block;
+	text-decoration: none;
+	span {
+		text-transform: capitalize;
+	}
+}
+
+main {
+	flex-wrap: wrap;
+	justify-content: space-around;
+}

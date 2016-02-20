@@ -1,0 +1,28 @@
+extends ./_template.jade
+
+block vars
+	- var pageName = "LAUNCH Physics";
+
+mixin topic(name)
+	a.topic(href="/topics/" + name)
+		img(src="/static/img/" + name + ".png", alt=name.replace(/_+/g, " "))
+
+block head
+	link(rel="stylesheet", href="/static/css/index.css")
+
+block title
+	title LAUNCH Physics
+
+block page_name
+	a(href="/")
+		img(src="/static/img/logo.png")
+
+block body
+	+topic("kinematics")
+	+topic("projectile_motion")
+	+topic("forces")
+	+topic("energy")
+	+topic("momentum")
+	+topic("electricity")
+	+topic("magnetism")
+	+topic("particle_physics")

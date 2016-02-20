@@ -1,0 +1,28 @@
+doctype html
+
+block vars
+
+html
+	head
+		link(rel="stylesheet", href="/static/css/main.css")
+		link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Exo+2")
+		block title
+			title= pageName + ' - LAUNCH Physics'
+		block head
+	body
+		nav
+			block page_name
+				h1= pageName
+			span.flex-spacer
+			a(href="/") Home
+			//- TODO Authentication
+			//- | {% if user %}
+			a(href="/account") My Account
+			a(href="/badges") Badges
+			a(href="/logout") Logout
+			//- | {% else %}
+			//- a(href="/login") Login
+			//- | {% endif %}
+		main
+			block body
+				h1 Under Construction!
