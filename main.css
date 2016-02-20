@@ -85,3 +85,9 @@ img {
   background-color: #f2f2f2;
   display: inline-block;
 }
+
+.badge {
+  border-style: groove;
+  border-width: thick;
+  font-weight: bold;
+}
