@@ -1,1 +1,8 @@
-form { margin: auto; }
+form {
+	margin: auto;
+
+	span.error {
+		color: red;
+		padding-bottom: 1em;
+	}
+}

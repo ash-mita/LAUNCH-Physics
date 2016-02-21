@@ -1,11 +1,14 @@
 import bcrypt
 import psycopg2
+import jwt
 
 conn = psycopg2.connect("dbname=launch_physics user=launch_physics")
 
+# Create the tables needed for the application.
 with conn:
 	with conn.cursor() as cur:
-		cur.execute("CREATE TABLE IF NOT EXISTS users (username text PRIMARY KEY, passhash text)")
+		cur.execute("CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, passhash TEXT)")
+		cur.execute("CREATE TABLE IF NOT EXISTS completions (name TEXT, username TEXT, status INTEGER)")
 
 # Check if the admin user exists; if they don"t, add an admin user.
 with conn:
@@ -27,4 +30,7 @@ def login(username, password):
 	# Check the passhash.
 	password = password.encode("UTF-8")
 	passhash = user_tuple[1].encode("UTF-8")
-	return bcrypt.hashpw(password, passhash) == passhash
+	if bcrypt.hashpw(password, passhash) != passhash:
+		return None
+	# Issue a token.
+	return jwt.encode({"username": username}, passhash)

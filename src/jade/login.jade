@@ -8,6 +8,10 @@ block head
 
 block body
 	form(method="POST")
+		h1 Log In
+		| {% if reason != none %}
+		span.error {{ reason }}
+		| {% endif %}
 		input(name="username", placeholder="Username")
 		input(name="password", placeholder="Password", type="password")
 		button(type="submit") Log In
