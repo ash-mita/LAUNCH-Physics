@@ -1,1 +1,9 @@
-form { margin: auto; }
+form { margin: auto; 
+  button {
+    background-color: darkseagreen;
+    color: aliceblue;
+    border-color: aliceblue;
+    padding-top: 2 em;
+    padding-bottom: 2 em;
+  }
+}
