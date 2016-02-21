@@ -53,7 +53,3 @@ def register_get():
 def topic_view(topic):
 	modules = ["example_module", "another_module", "a_third_module"]
 	return render_template("topic.html", modules=modules, topic=topic)
-
-@app.route("/topic/<topic>/<module>")
-def module_view(module, topic):
-	return render_template("module.html", module=module, topic=topic)
