@@ -1,8 +1,24 @@
 import bcrypt
-import psycopg2
 import jwt
+import os
+import psycopg2
+import urllib.parse
 
-conn = psycopg2.connect("dbname=launch_physics user=launch_physics")
+def connect():
+	dbURL = os.environ.get("DATABASE_URL")
+	if dbURL is None:
+		return psycopg2.connect("dbname=launch_physics user=launch_physics")
+	else:
+		url = urllib.parse.urlparse(dbURL)
+		return psycopg2.connect(
+			database=url.path[1:],
+			user=url.username,
+			password=url.password,
+			host=url.hostname,
+			port=url.port
+		)
+
+conn = connect()
 
 # Create the tables needed for the application.
 with conn:
