@@ -1,6 +1,9 @@
 a.topic {
 	display: block;
 	text-decoration: none;
+	img:hover {
+		background: #8fbc8f;
+	}
 	span {
 		text-transform: capitalize;
 	}
@@ -11,8 +14,4 @@ main {
 	flex-grow: 1;
 	flex-wrap: wrap;
 	justify-content: space-around;
-}
-
-img:hover {
-	background: #8fbc8f;
 }
