@@ -1,13 +1,8 @@
 .*
-__pycache__/
 !.gitignore
+__pycache__/
 
-launch-physics.db
-
-dist/
 node_modules/
-venv/
-
-static/css/
-static/js/
-templates/
+launch_physics/static/css/
+launch_physics/static/js/
+launch_physics/templates/

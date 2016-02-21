@@ -14,14 +14,14 @@ gulp.task "default", targets
 gulp.task "coffee", ->
   gulp.src "src/coffee/*.coffee"
     .pipe coffee()
-    .pipe gulp.dest "static/js/"
+    .pipe gulp.dest "launch_physics/static/js/"
 
 gulp.task "jade", ->
   gulp.src "src/jade/*.jade"
     .pipe jade {}
-    .pipe gulp.dest "templates/"
+    .pipe gulp.dest "launch_physics/templates/"
 
 gulp.task "sass", ->
   gulp.src "src/sass/*.scss"
     .pipe sass().on "error", sass.logError
-    .pipe gulp.dest "static/css/"
+    .pipe gulp.dest "launch_physics/static/css/"
