@@ -5,7 +5,7 @@ block vars
 
 mixin topic(name)
 	a.topic(href="/topic/" + name)
-		img(src="/static/img/" + name + ".png", alt=name.replace(/_+/g, " "))
+		img(src="/static/img/topic/" + name + ".png", alt=name.replace(/_+/g, " "))
 
 block head
 	link(rel="stylesheet", href="/static/css/index.css")
