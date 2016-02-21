@@ -1,0 +1,10 @@
+extends ./_template.jade
+
+block vars
+	- var pageName = "{{ module | replace('_', ' ') | title }}";
+
+block head
+	//- link(rel="stylesheet", href="/static/css/module.css")
+
+block body
+	span(style="font-size: 10em; color: red;") TODO
