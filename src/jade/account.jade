@@ -14,3 +14,9 @@ block body
 			input(name="new_password", placeholder="New Password", type="password")
 			input(name="confirm_password", placeholder="Confirm Password", type="password")
 			button(type="submit") Change Password
+	section
+		h2 User Information
+		table
+			tr
+				td Username
+				td {{ user.username }}

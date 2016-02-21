@@ -1,4 +1,4 @@
-from flask import make_response, render_template
+from flask import make_response, render_template, request
 
 def make_redirect(url):
 	resp = make_response(render_template("redirect.html", url=url))
