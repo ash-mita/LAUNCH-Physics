@@ -1,0 +1,7 @@
+main {
+	flex-direction: column;
+}
+
+td:first-child {
+	min-width: 20vw;
+}

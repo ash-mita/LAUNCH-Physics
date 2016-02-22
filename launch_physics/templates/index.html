@@ -1,0 +1,19 @@
+{% extends "_template.html" %}
+
+{% block title %}LAUNCH Physics{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+
+{% block body %}
+	<main>
+		{% for topic in topics %}
+			<a class="topic" href="/topic/{{ topic }}">
+				<img alt="{{ topic|replace('_', ' ')|title }}"
+					src="/static/img/topic/{{ topic }}.png">
+			</a>
+		{% endfor %}
+	</main>
+{% endblock %}

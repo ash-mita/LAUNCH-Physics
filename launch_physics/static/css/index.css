@@ -1,0 +1,14 @@
+a.topic {
+	display: block;
+	text-decoration: none;
+}
+a.topic > img:hover {
+	background: #8fbc8f;
+}
+
+main {
+	display: flex;
+	flex-grow: 1;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}

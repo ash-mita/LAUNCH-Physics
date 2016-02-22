@@ -1,0 +1,16 @@
+{% extends "_template.html" %}
+
+{% block title %}{{ topic | title }}{{ super() }}{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="/static/css/topic.css">
+{% endblock %}
+
+{% block body %}
+	{% for module in modules %}
+		<a href="/topic/{{topic}}/{{module}}" class="module">
+			{{ module | replace('_', ' ') | title }}
+		</a>
+	{% endfor %}
+{% endblock %}
