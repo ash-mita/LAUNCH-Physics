@@ -1,0 +1,8 @@
+form {
+	margin: auto;
+}
+
+.error {
+	color: #ff0000;
+	padding-bottom: 1em;
+}

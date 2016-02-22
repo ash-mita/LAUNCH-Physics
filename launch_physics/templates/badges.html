@@ -1,0 +1,19 @@
+{% extends "_template.html" %}
+
+{% block title %}Badges{{ super() }}{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="/static/css/badges.css">
+{% endblock %}
+
+{% block body %}
+	<main>
+		{% for badge in badges %}
+			<div class="badge">
+				<img src="/static/img/badges/{{ badge[0] }}.png">
+				<span>{{ badge[0]|replace('_', ' ')|title }}</span>
+			</div>
+		{% endfor %}
+	</main>
+{% endblock %}

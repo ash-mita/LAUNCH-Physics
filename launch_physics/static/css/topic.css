@@ -2,7 +2,7 @@ main {
 	flex-direction: column;
 }
 
-a.module {
+.module {
 	display: block;
 	font-size: 1.5em;
 	padding: 20px;

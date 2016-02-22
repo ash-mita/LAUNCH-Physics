@@ -2,8 +2,3 @@
 !.gitignore
 __pycache__/
 *.pyc
-
-node_modules/
-launch_physics/static/css/
-launch_physics/static/js/
-launch_physics/templates/

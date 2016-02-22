@@ -1,0 +1,17 @@
+{% extends "_template.html" %}
+
+{% block title %}Register{{ super() }}{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
+{% block body %}
+	<form method="POST">
+		<input name="username" placeholder="Username">
+		<input name="password" placeholder="Password" type="password">
+		<input name="confirm_password" placeholder="Confirm Password" type="password">
+		<button type="submit">Register</button>
+	</form>
+{% endblock %}
