@@ -23,12 +23,6 @@
   background-color: green;
 }
 
-li {
-  display: inline-block;
-  list-style-type: square;
-  text-align: left;
-}
-
 .word:hover {
     background-color: #f2f2f2;
 	  color: #262626;
@@ -36,7 +30,7 @@ li {
 
 a {
   color: inherit;
-  style: none;
+  text-decoration: none;
 }
 .word {
 	padding: 3% 3%;
@@ -45,6 +39,9 @@ a {
   color: #262626;
   text-align: center;
   text-decoration: none;
+  display: inline-block;
+  list-style-type: square;
+  text-align: left;
 }
 
 div {
