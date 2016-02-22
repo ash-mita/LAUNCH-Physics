@@ -55,8 +55,6 @@ with conn:
 				("projectile_motion",),
 				("forces",),
 				("energy",),
-				("momentum",),
-				("electricity",)
 			]
 			cur.executemany("INSERT INTO topics (name) VALUES (%s)", topics)
 		topics = list(map(lambda x: x[0], topics))
