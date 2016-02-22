@@ -1,0 +1,33 @@
+{% extends "_template.html" %}
+
+{% block title %}Badges{{ super() }}{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="/static/css/badges.css">
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="badge">
+			<img src="/static/img/badges/newbie.png"/>
+			<span>Newbie</span>
+		</div>
+		<div class="badge">
+			<img src="/static/img/badges/rookie.png"/>
+			<span>Rookie</span>
+		</div>
+		<div class="badge">
+			<img src="/static/img/badges/physicist.png"/>
+			<span>Physicist</span>
+		</div>
+		<div class="badge">
+			<img src="/static/img/badges/muon.png"/>
+			<span>Muon</span>
+		</div>
+		<div class="badge">
+			<img src="/static/img/badges/higgs.png"/>
+			<span>Higgs</span>
+		</div>
+	</main>
+{% endblock %}

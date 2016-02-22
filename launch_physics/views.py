@@ -1,19 +1,22 @@
 from flask import make_response, render_template, request
 from launch_physics import app
-from launch_physics.user import auth, login
+from launch_physics.db import topics
+from launch_physics.user import auth, login, require_auth
 from launch_physics.util import make_redirect
 
 import datetime
 
 @app.route("/")
 def index_get():
-	return render_template("index.html", user=auth())
+	return render_template("index.html", topics=topics, user=auth())
 
 @app.route("/account")
+@require_auth
 def account_get():
 	return render_template("account.html", user=auth())
 
 @app.route("/badges")
+@require_auth
 def badges_get():
 	return render_template("badges.html", user=auth())
 
@@ -39,6 +42,7 @@ def login_post():
 		return resp
 
 @app.route("/logout")
+@require_auth
 def logout_get():
 	resp = make_redirect("/")
 	resp.set_cookie("auth", value="", expires=0)

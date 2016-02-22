@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		{% block head %}
+		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo+2">
+		<title>{% block title %} - LAUNCH Physics{% endblock %}</title>
+		{% endblock %}
+	</head>
+	<body>
+		<nav>
+			<a href="/"><img src="/static/img/logo.png"></a>
+			<span class="flex-spacer"></span>
+			{% if user == none %}
+				<a href="/login">Login</a>
+			{% else %}
+				<a href="/account">My Account</a>
+				<a href="/badges">Badges</a>
+				<a href="/logout">Logout</a>
+			{% endif %}
+		</nav>
+		{% block body %}{% endblock %}
+	</body>
+</html>

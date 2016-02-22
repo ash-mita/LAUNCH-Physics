@@ -1,9 +1,9 @@
-from flask import request
-from launch_physics.db import conn
 import bcrypt
 import jwt
 
+from flask import request
 from launch_physics.db import conn
+from launch_physics.util import make_redirect
 
 def auth():
 	token = request.cookies.get("auth")
@@ -30,6 +30,15 @@ def login(username, password):
 		return None
 	# Issue a token.
 	return jwt.encode({"username": username}, passhash)
+
+def require_auth(func):
+	def inner(**kwargs):
+		if auth() is None:
+			return make_redirect("/login")
+		else:
+			return func(**kwargs)
+	inner.__name__ = func.__name__
+	return inner
 
 class User:
 	"""Represents a user's account."""

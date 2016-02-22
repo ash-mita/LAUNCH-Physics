@@ -1,0 +1,29 @@
+{% extends "_template.html" %}
+
+{% block title %}My Account{{ super() }}{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="stylesheet" href="/static/css/account.css">
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h2>User Information</h2>
+		<table>
+			<tr>
+				<td>Username</td>
+				<td>{{ user.username }}</td>
+			</tr>
+		</table>
+	</section>
+	<section>
+		<h2>Settings</h2>
+		<form action="/change_password" method="POST">
+			<input name="old_password" placeholder="Old Password" type="password">
+			<input name="new_password" placeholder="New Password" type="password">
+			<input name="confirm_password" placeholder="Confirm Password" type="password">
+			<button type="submit">Change Password</button>
+		</form>
+	</section>
+{% endblock %}
