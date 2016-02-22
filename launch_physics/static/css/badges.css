@@ -9,11 +9,11 @@ main {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-	img {
-		height: 200px;
-		width: 300px;
-	}
-	span {
-		font-size: 1.5em;
-	}
+}
+.badge > img {
+	height: 200px;
+	width: 300px;
+}
+.badge > span {
+	font-size: 1.5em;
 }

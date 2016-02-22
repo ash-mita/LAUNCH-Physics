@@ -13,11 +13,11 @@
 			<a href="/"><img src="/static/img/logo.png"></a>
 			<span class="flex-spacer"></span>
 			{% if user == none %}
-				<a href="/login">Login</a>
+				<a class="navlink" href="/login">Login</a>
 			{% else %}
-				<a href="/account">My Account</a>
-				<a href="/badges">Badges</a>
-				<a href="/logout">Logout</a>
+				<a class="navlink" href="/account">My Account</a>
+				<a class="navlink" href="/badges">Badges</a>
+				<a class="navlink" href="/logout">Logout</a>
 			{% endif %}
 		</nav>
 		{% block body %}{% endblock %}

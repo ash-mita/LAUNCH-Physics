@@ -1,12 +1,9 @@
 a.topic {
 	display: block;
 	text-decoration: none;
-	img:hover {
-		background: #8fbc8f;
-	}
-	span {
-		text-transform: capitalize;
-	}
+}
+a.topic > img:hover {
+	background: #8fbc8f;
 }
 
 main {

@@ -8,14 +8,20 @@ body {
 	padding: 8px;
 }
 
-a { color: #262626; }
-span.flex-spacer { flex-grow: 1; }
+a {
+	color: #262626;
+}
+
+span.flex-spacer {
+	flex-grow: 1;
+}
 
 form, section {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
 }
+
 form button[type="submit"] {
 	width: 100%;
 }
@@ -25,13 +31,9 @@ nav {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	h1 {
-		font-size: 2em;
-		margin: 15px 0px;
-	}
-	a {
-		padding: 10px;
-	}
+}
+.navlink {
+	padding: 10px;
 }
 
 main {
