@@ -64,10 +64,8 @@ class User:
 		# (We're using the passhashes as HMAC keys)
 		with conn:
 			with conn.cursor() as cur:
-				cur.execute("SELECT (passhash, modulesCompleted) FROM users WHERE username = %s", (username,))
-				user_tuple = cur.fetchone()
-				print(user_tuple)
-				passhash = user_tuple[0]
+				cur.execute("SELECT * FROM users WHERE username = %s", (username,))
+				username, passhash, modulesCompleted = cur.fetchone()
 		# This'll raise an error if the token signature is invalid.
 		return User(jwt.decode(token, passhash)["username"], modulesCompleted)
 	@classmethod
@@ -83,7 +81,6 @@ class User:
 	def change_password(self, password):
 		"""Changes the user's password."""
 		passhash = bcrypt.hashpw(password.encode("UTF-8"), bcrypt.gensalt())
-		print("==============>", passhash)
 		with conn:
 			with conn.cursor() as cur:
 				cur.execute("UPDATE users SET passhash=%s WHERE username=%s",
