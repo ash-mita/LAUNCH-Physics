@@ -72,5 +72,4 @@ def register_post():
 
 @app.route("/topic/<topic>")
 def topic_view(topic):
-	modules = ["example_module", "another_module", "a_third_module"]
-	return render_template("topic.html", user=auth(), modules=modules, topic=topic)
+	return render_template("topic.html", user=auth(), modules=modules(topic), topic=topic)

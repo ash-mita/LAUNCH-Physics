@@ -24,7 +24,8 @@ with conn:
 		cur.execute("CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, passhash TEXT, modulesCompleted INTEGER)")
 		cur.execute("CREATE TABLE IF NOT EXISTS scores (moduleName TEXT, username TEXT, status INTEGER)")
 		cur.execute("CREATE TABLE IF NOT EXISTS topics (topicName TEXT PRIMARY KEY)")
-		cur.execute("CREATE TABLE IF NOT EXISTS modules (modulesName TEXT PRIMARY KEY, topicName TEXT)")
+		cur.execute("CREATE TABLE IF NOT EXISTS modules (moduleName TEXT PRIMARY KEY, topicName TEXT, html TEXT)")
+		cur.execute("CREATE TABLE IF NOT EXISTS quizzes (topicName TEXT PRIMARY KEY, q1 TEXT, q2 TEXT, q3 TEXT, q4 TEXT, answer INTEGER)")
 		cur.execute("CREATE TABLE IF NOT EXISTS badges (badgeName TEXT PRIMARY KEY, modulesNeeded INTEGER)")
 
 # Check if data exists; if any given piece doesn't, add it.
@@ -48,14 +49,10 @@ with conn:
 			]
 			cur.executemany("INSERT INTO badges (badgeName, modulesNeeded) VALUES (%s, %s)", badges)
 	with conn.cursor() as cur:
-		cur.execute("SELECT * FROM topics")
-		topics = cur.fetchall()
-		if len(topics) == 0:
-			topics = [
-				("kinematics",),
-				("projectile_motion",),
-				("forces",),
-				("energy",),
-			]
-			cur.executemany("INSERT INTO topics (topicName) VALUES (%s)", topics)
-		topics = list(map(lambda x: x[0], topics))
+		cur.execute("SELECT * FROM quizzes")
+		quizzes = cur.fetchall()
+
+def modules(topicName):
+	with conn.cursor() as cur:
+		cur.execute("SELECT * FROM modules WHERE topicName=%s", (topicName,))
+		return cur.fetchall()
