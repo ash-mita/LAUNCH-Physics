@@ -1,6 +1,6 @@
 from flask import make_response, render_template, request
 from launch_physics import app
-from launch_physics.db import badges, topics
+from launch_physics.db import badges, modules, topics
 from launch_physics.user import auth, login, require_auth, User
 from launch_physics.util import make_redirect
 
