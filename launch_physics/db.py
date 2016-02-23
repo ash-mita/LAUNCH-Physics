@@ -49,8 +49,29 @@ with conn:
 			]
 			cur.executemany("INSERT INTO badges (badgeName, modulesNeeded) VALUES (%s, %s)", badges)
 	with conn.cursor() as cur:
-		cur.execute("SELECT * FROM quizzes")
-		quizzes = cur.fetchall()
+		cur.execute("SELECT * FROM topics")
+		topics = cur.fetchall()
+		if len(topics) == 0:
+			topics = [
+				("kinematics",),
+				("projectile_motion",),
+				("forces",),
+				("momentum",),
+			]
+			cur.executemany("INSERT INTO topics (topicName) VALUES (%s)", topics)
+		topics = list(map(lambda x: x[0], topics))
+	with conn.cursor() as cur:
+		cur.execute("SELECT * FROM topics")
+		topics = cur.fetchall()
+		if len(topics) == 0:
+			topics = [
+				("kinematics",),
+				("projectile_motion",),
+				("forces",),
+				("momentum",),
+			]
+			cur.executemany("INSERT INTO topics (topicName) VALUES (%s)", topics)
+		topics = list(map(lambda x: x[0], topics))
 
 def modules(topicName):
 	with conn.cursor() as cur:
