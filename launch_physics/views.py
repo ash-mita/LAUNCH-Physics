@@ -1,7 +1,7 @@
 from flask import make_response, render_template, request
 from launch_physics import app
 from launch_physics.db import badges, topics
-from launch_physics.user import auth, login, require_auth
+from launch_physics.user import auth, login, require_auth, User
 from launch_physics.util import make_redirect
 
 import datetime
@@ -22,7 +22,7 @@ def badges_get():
 
 @app.route("/login", methods=["GET"])
 def login_get(reason=None):
-	return render_template("login.html", user=auth(), reason=reason)
+	return render_template("login.html", reason=reason, user=auth())
 
 @app.route("/login", methods=["POST"])
 def login_post():
@@ -49,8 +49,26 @@ def logout_get():
 	return resp
 
 @app.route("/register", methods=["GET"])
-def register_get():
-	return render_template("register.html", user=auth())
+def register_get(reason=None):
+	return render_template("register.html", reason=reason, user=auth())
+
+@app.route("/register", methods=["POST"])
+def register_post():
+	username = request.form["username"]
+	password = request.form["password"]
+	confirm_password = request.form["confirm_password"]
+	if password != confirm_password:
+		resp = make_response(register_get("Passwords do not match."))
+		resp.status_code = 403
+		return resp
+	elif User.exists(username):
+		resp = make_response(register_get("User already exists."))
+		resp.status_code = 403
+		return resp
+	else:
+		User.new(username, password)
+		# Log in with the new credentials.
+		return login_post()
 
 @app.route("/topic/<topic>")
 def topic_view(topic):
