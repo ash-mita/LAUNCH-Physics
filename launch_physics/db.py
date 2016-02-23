@@ -23,9 +23,8 @@ with conn:
 	with conn.cursor() as cur:
 		cur.execute("CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, passhash TEXT, modulesCompleted INTEGER)")
 		cur.execute("CREATE TABLE IF NOT EXISTS scores (moduleName TEXT, username TEXT, status INTEGER)")
-		cur.execute("CREATE TABLE IF NOT EXISTS topics (topicName TEXT PRIMARY KEY)")
-		cur.execute("CREATE TABLE IF NOT EXISTS modules (moduleName TEXT PRIMARY KEY, topicName TEXT, html TEXT)")
-		cur.execute("CREATE TABLE IF NOT EXISTS quizzes (topicName TEXT PRIMARY KEY, q1 TEXT, q2 TEXT, q3 TEXT, q4 TEXT, answer INTEGER)")
+		cur.execute("CREATE TABLE IF NOT EXISTS topics (topicName TEXT PRIMARY KEY, moduleCount INTEGER)")
+		cur.execute("CREATE TABLE IF NOT EXISTS quizzes (topicName TEXT, num INTEGER, question TEXT, answer INTEGER, q1 TEXT, q2 TEXT, q3 TEXT, q4 TEXT)")
 		cur.execute("CREATE TABLE IF NOT EXISTS badges (badgeName TEXT PRIMARY KEY, modulesNeeded INTEGER)")
 
 # Check if data exists; if any given piece doesn't, add it.
@@ -53,27 +52,25 @@ with conn:
 		topics = cur.fetchall()
 		if len(topics) == 0:
 			topics = [
-				("kinematics",),
-				("projectile_motion",),
-				("forces",),
-				("momentum",),
+				("kinematics", 3),
+				("projectile_motion", 0),
+				("forces", 0),
+				("momentum", 0),
 			]
-			cur.executemany("INSERT INTO topics (topicName) VALUES (%s)", topics)
+			cur.executemany("INSERT INTO topics (topicName, moduleCount) VALUES (%s, %s)", topics)
 		topics = list(map(lambda x: x[0], topics))
 	with conn.cursor() as cur:
-		cur.execute("SELECT * FROM topics")
-		topics = cur.fetchall()
-		if len(topics) == 0:
-			topics = [
-				("kinematics",),
-				("projectile_motion",),
-				("forces",),
-				("momentum",),
+		cur.execute("SELECT * FROM quizzes")
+		quizzes = cur.fetchall()
+		if len(quizzes) == 0:
+			quizzes = [
+				# kinematics
+				("kinematics", 1, "Which is the displacement of the object’s motion, and what is the distance that the object traveled?", 2, "1. Distance, 2. Displacement", "1. Displacement, 2. Distance", "", ""),
+				("kinematics", 2, "Velocity is a vector.", 1, "True", "False", "", ""),
+				("kinematics", 3, "Displacement is a vector.", 1, "True", "False", "", ""),
+				("kinematics", 4, "Acceleration is the change in position over the change in time.", 2, "True", "False", "", ""),
+				("kinematics", 5, "If a ball is dropped from a height of 5 meters, how long will it take for the ball to reach the ground?", 1, "Less than 1 second", "2 Seconds", "3 Seconds", "4 Seconds"),
+				("kinematics", 6, "How far will an object travel if it moves at 10 meters per second for 15 seconds?", 2, "100 meters", "150 meters", "200 meters", "50 meters"),
+				# TODO
 			]
-			cur.executemany("INSERT INTO topics (topicName) VALUES (%s)", topics)
-		topics = list(map(lambda x: x[0], topics))
-
-def modules(topicName):
-	with conn.cursor() as cur:
-		cur.execute("SELECT * FROM modules WHERE topicName=%s", (topicName,))
-		return cur.fetchall()
+			cur.executemany("INSERT INTO quizzes (topicName, num, question, answer, q1, q2, q3, q4) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", quizzes)

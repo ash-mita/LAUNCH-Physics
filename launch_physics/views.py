@@ -1,6 +1,7 @@
 from flask import make_response, render_template, request
 from launch_physics import app
-from launch_physics.db import badges, modules, topics
+from launch_physics.data import introduction, modules, quizzes
+from launch_physics.db import badges, topics
 from launch_physics.user import auth, login, require_auth, User
 from launch_physics.util import make_redirect
 
@@ -72,4 +73,15 @@ def register_post():
 
 @app.route("/topic/<topic>")
 def topic_view(topic):
-	return render_template("topic.html", user=auth(), modules=modules(topic), topic=topic)
+	intro = introduction(topic)
+	if intro is None:
+		return handle_404()
+	m = modules(topic)
+	q = quizzes(topic)
+	return render_template("topic.html", user=auth(), intro=intro, modules=m, quizzes=q, topic=topic)
+
+@app.errorhandler(404)
+def handle_404():
+	resp = make_response("404 Not Found")
+	resp.status_code = 404
+	return resp

@@ -16,16 +16,6 @@ span.flex-spacer {
 	flex-grow: 1;
 }
 
-form, section {
-	align-items: center;
-	display: flex;
-	flex-direction: column;
-}
-
-form button[type="submit"] {
-	width: 100%;
-}
-
 nav {
 	align-items: center;
 	display: flex;

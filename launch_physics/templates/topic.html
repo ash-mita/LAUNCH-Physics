@@ -1,6 +1,6 @@
 {% extends "_template.html" %}
 
-{% block title %}{{ topic | title }}{% endblock %}
+{% block title %}{{ topic | replace("_", " ") | title }}{% endblock %}
 
 {% block head %}
 	{{ super() }}
@@ -8,9 +8,25 @@
 {% endblock %}
 
 {% block body %}
+	<h1>{{ topic | replace("_", " ") | title }}</h1>
+	<h2>Introduction</h2>
+	{{ intro | safe }}
+	<h2>Lesson</h2>
 	{% for module in modules %}
-		<a href="/topic/{{topic}}/{{module}}" class="module">
-			{{ module | replace('_', ' ') | title }}
-		</a>
+		<h3>Module {{ loop.index }}</h3>
+		{{ module | safe }}
 	{% endfor %}
+	<h2>Quiz</h2>
+	<form method="POST">
+		{% for quiz in quizzes %}
+			{% set n = loop.index %}
+			<h3>Question {{ n }}: {{ quiz[2] }}</h3>
+			<ol>
+				{% for answer in quiz[4:] if answer != "" %}
+					<li><input name="{{ n }}" type="radio" value="{{ loop.index }}">{{ answer }}</li>
+				{% endfor %}
+			</ol>
+		{% endfor %}
+		<button type="submit">Submit</button>
+	</form>
 {% endblock %}

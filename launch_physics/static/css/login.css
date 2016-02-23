@@ -1,5 +1,12 @@
 form {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 	margin: auto;
+}
+
+form button[type="submit"] {
+	width: 100%;
 }
 
 .error {

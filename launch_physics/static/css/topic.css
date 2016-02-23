@@ -8,3 +8,7 @@ main {
 	padding: 20px;
 	text-decoration: none;
 }
+
+ol {
+	list-style-type: upper-alpha;
+}
